@@ -8,10 +8,10 @@ namespace MvcSampleApp.Core.Entities
 {
     public class BaseEntity
     {
-        public Guid ID { get; set; }
-        public Nullable<int> CreatedBy { get; set; }
-        public Nullable<System.DateTimeOffset> CreatedDateTime { get; set; }
-        public Nullable<int> UpdatedBy { get; set; }
-        public Nullable<System.DateTimeOffset> UpdatedDateTime { get; set; }
+        public Guid Id { get; set; }
+        public Guid? CreatedBy { get; set; }
+        public DateTimeOffset? CreatedDateTime { get; set; }
+        public Guid? UpdatedBy { get; set; }
+        public DateTimeOffset? UpdatedDateTime { get; set; }
     }
 }

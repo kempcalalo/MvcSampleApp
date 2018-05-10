@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MvcSampleApp.DTO.CompanyDto>
+
+@{
+    ViewBag.Title = "Company";
+}
+
+
+<div class="row">
+    <p>@ViewData["msg"]</p>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    
+    <div class="col-md-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                <h1 class="panel-title list-panel-title">List of Companies</h1>
+            </div>
+            <div class="panel-body">
+                <table id="company-data-table" class="table table-striped table-bordered" style="width: 100%">
+                    <thead>
+                    <tr>
+                        <th>Company Name</th>
+                        <th>Conception Date</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.CompanyName</td>
+                            <td>
+                                @if (item.ConceptionDate != null)
+                                {
+                                    @item.ConceptionDate.Value.ToString("MM/dd/yyyy")
+                                }
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { onclick = "return confirm('Are sure wants to delete?');" })
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> 
+ 
+@section Scripts
+{
+
+<script type="text/javascript">
+        $(document).ready(function() {
+
+            $('#company-data-table').DataTable();
+
+        });
+</script>
+
+}

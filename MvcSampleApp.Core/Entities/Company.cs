@@ -10,7 +10,7 @@ namespace MvcSampleApp.Core.Entities
     {
         public string CompanyName { get; set; }
         public byte[] CompanyLogo { get; set; }
-        public Nullable<System.DateTimeOffset> ConceptionDate { get; set; }
+        public DateTimeOffset? ConceptionDate { get; set; }
 
         public virtual ICollection<Employee> Employees { get; set; }
 

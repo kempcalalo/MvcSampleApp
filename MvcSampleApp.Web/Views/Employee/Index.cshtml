@@ -1,0 +1,75 @@
+﻿@model IEnumerable<MvcSampleApp.DTO.EmployeeDto>
+
+@{
+    ViewBag.Title = "Employee";
+}
+
+
+<div class="row">
+    <p>@ViewData["msg"]</p>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <div class="col-md-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                <h1 class="panel-title list-panel-title">List of Employees</h1>
+            </div>
+            <div class="panel-body">
+                <table id="employee-data-table" class="table table-striped table-bordered" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Middle Date</th>
+                            <th>Last Name</th>
+                            <th>Date of Birth</th>
+                            <th>ID Number</th>
+                            <th>Gender</th>
+                            <th>Marital Status</th>
+                            <th>Company Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>@item.FirstName</td>
+                            <td>@item.MiddleName</td>
+                            <td>@item.LastName</td>
+                            <td>
+                                @if (item.DateOfBirth != null)
+        {
+                        @item.DateOfBirth.Value.ToString("MM/dd/yyyy")
+}
+                            </td>
+                            <td>@item.NationalIdNo</td>
+                            <td>@item.Gender</td>
+                            <td>@item.MaritalStatus</td>
+                            <td>@item.Company.CompanyName</td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { onclick = "return confirm('Are sure wants to delete?');" })
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('#employee-data-table').DataTable();
+
+        });
+    </script>
+
+}

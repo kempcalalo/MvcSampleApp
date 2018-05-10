@@ -49,8 +49,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IGenericRepository.cs" />
+    <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Migrations\201805080746575_InitialMigration.cs" />
+    <Compile Include="Migrations\201805080746575_InitialMigration.Designer.cs">
+      <DependentUpon>201805080746575_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805091041457_AddCascadeDelete.cs" />
+    <Compile Include="Migrations\201805091041457_AddCascadeDelete.Designer.cs">
+      <DependentUpon>201805091041457_AddCascadeDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MvcSampleAppContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\GenericRepository.cs" />
+    <Compile Include="Repository\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -63,9 +76,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Migrations\" />
-    <Folder Include="Repository\" />
+    <EmbeddedResource Include="Migrations\201805080746575_InitialMigration.resx">
+      <DependentUpon>201805080746575_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805091041457_AddCascadeDelete.resx">
+      <DependentUpon>201805091041457_AddCascadeDelete.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
